@@ -28,7 +28,7 @@
             <button type="submit" class="btn btn-primary w-100 ">Sign in</button>
            </div>
           </form>
-          <a href=""> I don't have an account, ceate new</a>
+          <a href="{{route('auth.register')}}"> I don't have an account, ceate new</a>
         </div>
       </div>
     </div>

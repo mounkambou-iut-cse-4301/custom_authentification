@@ -11,5 +11,13 @@ class MainController extends Controller
    }
    function register(){
     return view ('auth.register');
-}
+   }
+
+   function save(Request $re){
+       $re->validate([
+           'name'=>'required',
+           'email'=>'required|email',
+           'password'=>'required|min:5|max:12',
+       ]);
+   }
 }
