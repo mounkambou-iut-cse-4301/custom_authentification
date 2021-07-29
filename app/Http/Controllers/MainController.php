@@ -36,4 +36,24 @@ class MainController extends Controller
        }
 
    }
+
+   function check(Request $re){
+       $re->validate([
+        'email'=>'required|email',
+        'password'=>'required|min:5|max:12',
+       ]);
+
+       $userInfo=Admin::where('email',$re->email)->first();
+       if(!$userInfo){
+          return back()->with('fail','We donnot recognize your email address');
+       }else{
+           if(Hash::check($re->password,$userInfo->password)){
+              $re->session()->put('LoggedUser',$userInfo->id);
+              return redirect('admin/dashboard');
+           }else{
+            return back()->with('fail','Incorrect password');
+
+           }
+       }
+   }
 }
