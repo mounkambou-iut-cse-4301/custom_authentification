@@ -49,11 +49,25 @@ class MainController extends Controller
        }else{
            if(Hash::check($re->password,$userInfo->password)){
               $re->session()->put('LoggedUser',$userInfo->id);
+            //   dd(session('LoggedUser'));
               return redirect('admin/dashboard');
            }else{
             return back()->with('fail','Incorrect password');
 
            }
        }
+   }
+
+   function logout(){
+       if(session()->has('LoggedUser')){
+        session()->pull('LoggedUser');
+        return redirect('/auth/login');
+       }
+   }
+
+   function dashboard(){
+       $data=Admin::where('id',session('LoggedUser'))->first();
+      
+       return view('admin.dashboard')->with('data',$data);
    }
 }

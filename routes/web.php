@@ -22,4 +22,6 @@ Route::get('/auth/login', [MainController::class,'login'])->name('auth.login');
 Route::get('/auth/register', [MainController::class,'register'])->name('auth.register');
 Route::post('/auth/save', [MainController::class,'save'])->name('auth.save');
 Route::post('/auth/check', [MainController::class,'check'])->name('auth.check');
+Route::get('/admin/logout', [MainController::class,'logout'])->name('auth.logout');
+Route::get('/admin/dashboard', [MainController::class,'dashboard'])->name('auth.dashboard');
 
