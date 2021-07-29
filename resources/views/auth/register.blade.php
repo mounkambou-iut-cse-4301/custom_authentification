@@ -16,6 +16,18 @@
         <div class="col-md-4 ">
           <h4 class="text-center">Register | Custom Auth</h4><hr>
           <form action="{{route('auth.save')}}" method="post">
+              @if(Session::get('success'))
+               <div class="alert alert-success">
+                  {{Session::get('success')}}
+               </div>
+              @endif
+              @if(Session::get('fail'))
+               <div class="alert alert-danger">
+                 {{Session::get('fail')}} 
+               </div>
+              @endif
+
+
               @csrf
           <div class="mb-3">
               <label for="name" class="form-label fw-bold">Name</label>
