@@ -17,11 +17,23 @@ use App\Http\Controllers\MainController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/auth/login', [MainController::class,'login'])->name('auth.login');
-Route::get('/auth/register', [MainController::class,'register'])->name('auth.register');
 Route::post('/auth/save', [MainController::class,'save'])->name('auth.save');
 Route::post('/auth/check', [MainController::class,'check'])->name('auth.check');
+
 Route::get('/admin/logout', [MainController::class,'logout'])->name('auth.logout');
-Route::get('/admin/dashboard', [MainController::class,'dashboard'])->name('auth.dashboard');
+
+
+// Route::group(['middleware'=>['AuthCheck']],function(){
+//     Route::get('/auth/login', [MainController::class,'login'])->name('auth.login');
+//     Route::get('/auth/register', [MainController::class,'register'])->name('auth.register');
+
+//     Route::get('/admin/dashboard', [MainController::class,'dashboard'])->name('auth.dashboard');
+// });
+
+Route::middleware(['AuthCheck'])->group(function () {
+    Route::get('/auth/login', [MainController::class,'login'])->name('auth.login');
+    Route::get('/auth/register', [MainController::class,'register'])->name('auth.register');
+
+    Route::get('/admin/dashboard', [MainController::class,'dashboard'])->name('auth.dashboard');
+});
 
