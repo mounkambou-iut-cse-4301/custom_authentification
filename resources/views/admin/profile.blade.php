@@ -9,14 +9,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 
-    <title>Dashboard</title>
+    <title>Profile</title>
 </head>
 
 <body>
     <div class="container">
         <div class="row mt-5 d-flex justify-content-center">
             <div class="col-md-6 ">
-            <h4 class="text-center">Dashboard</h4><hr>
+            <h4 class="text-center">Profile</h4><hr>
                 <table class="table table-success table-striped">
                     <thead>
                         <tr>
@@ -36,7 +36,7 @@
 
                 <ul>
                     <li><a href="/admin/dashboard">Dasboard</a></li>
-                    <li><a href="{{route('admin.staff')}}">Staff</a></li>
+                    <li><a href="/admin/staff">Staff</a></li>
                     <li><a href="/admin/settings">Settings</a></li>
                     <li><a href="/admin/profile">Profile</a></li>
                 </ul>

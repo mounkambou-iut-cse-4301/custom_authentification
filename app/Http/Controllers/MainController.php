@@ -67,7 +67,21 @@ class MainController extends Controller
 
    function dashboard(){
        $data=Admin::where('id',session('LoggedUser'))->first();
-      
        return view('admin.dashboard')->with('data',$data);
    }
+
+   function settings(){
+    $data=Admin::where('id',session('LoggedUser'))->first();
+    return view('admin.settings')->with('data',$data);
+}
+
+function profile(){
+    $data=Admin::where('id',session('LoggedUser'))->first();
+    return view('admin.profile')->with('data',$data);
+}
+
+function staff(){
+    $data=Admin::where('id',session('LoggedUser'))->first();
+    return view('admin.staff')->with('data',$data);
+}
 }
